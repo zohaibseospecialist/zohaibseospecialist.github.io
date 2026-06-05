@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zohaib Fayyaz — SEO Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080C14;
+    --surface: #0F1623;
+    --card: #131C2E;
+    --border: #1E2D47;
+    --accent: #0EA5E9;
+    --accent2: #38BDF8;
+    --accent-glow: rgba(14,165,233,0.15);
+    --text: #E8F0FF;
+    --muted: #6B83A6;
+    --white: #ffffff;
+    --green: #10B981;
+    --amber: #F59E0B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── GRID LINES ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(14,165,233,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,165,233,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(8,12,20,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    color: var(--bg) !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(14,165,233,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+  .orb2 { width: 300px; height: 300px; background: rgba(56,189,248,0.08); bottom: 0; left: 200px; animation: float 10s ease-in-out infinite reverse; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+  }
+
+  .hero-content { max-width: 700px; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(14,165,233,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 12px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 500px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent);
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 0 30px rgba(14,165,233,0.3);
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 0 40px rgba(14,165,233,0.5); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STATS ROW */
+  .stats-row {
+    display: flex; gap: 48px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .stat-item {}
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: absolute;
+    right: 60px; top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    z-index: 2;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .rank-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rank-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .rank-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .rank-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .rank-badge {
+    background: rgba(16,185,129,0.15);
+    color: var(--green);
+    border: 1px solid rgba(16,185,129,0.3);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+
+  .rank-keyword {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .rank-bar-wrap { background: var(--border); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 6px; }
+  .rank-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .rank-meta { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
+
+  .traffic-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .traffic-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .traffic-title { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--white); }
+  .traffic-up { color: var(--green); font-size: 0.8rem; font-weight: 600; }
+
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; }
+  .bar {
+    flex: 1;
+    background: var(--border);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .bar::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, var(--accent2), var(--accent));
+    border-radius: 3px 3px 0 0;
+    animation: barGrow 1.5s ease both;
+  }
+  .bar:nth-child(1)::after { height: 35%; animation-delay: 0.1s; }
+  .bar:nth-child(2)::after { height: 55%; animation-delay: 0.15s; }
+  .bar:nth-child(3)::after { height: 45%; animation-delay: 0.2s; }
+  .bar:nth-child(4)::after { height: 70%; animation-delay: 0.25s; }
+  .bar:nth-child(5)::after { height: 60%; animation-delay: 0.3s; }
+  .bar:nth-child(6)::after { height: 80%; animation-delay: 0.35s; }
+  .bar:nth-child(7)::after { height: 75%; animation-delay: 0.4s; }
+  .bar:nth-child(8)::after { height: 95%; animation-delay: 0.45s; }
+
+  @keyframes barGrow {
+    from { height: 0%; }
+  }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 100px 60px; }
+
+  .section-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin-bottom: 60px;
+    font-weight: 300;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--accent-glow), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover { border-color: rgba(14,165,233,0.4); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(14,165,233,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .service-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .service-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .stag {
+    font-size: 0.7rem;
+    background: rgba(14,165,233,0.08);
+    border: 1px solid rgba(14,165,233,0.15);
+    color: var(--accent2);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* ── CASE STUDIES ── */
+  .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card:hover { border-color: rgba(14,165,233,0.3); transform: translateY(-4px); }
+
+  .case-industry {
+    display: inline-block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    background: var(--surface);
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .case-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .case-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+
+  .case-metrics { display: flex; gap: 28px; }
+
+  .metric { }
+  .metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+  .metric-value.up { color: var(--green); }
+  .metric-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+  .case-divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  .case-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+  .case-tool {
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--surface);
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  /* WIDE CASE CARD */
+  .case-card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+  .case-card.wide .case-metrics { flex-direction: column; gap: 16px; }
+  .case-card.wide .metric { display: flex; align-items: center; gap: 16px; }
+  .case-card.wide .metric-value { font-size: 2.4rem; }
+
+  /* ── SKILLS ── */
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+
+  .skills-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .skill-item {}
+  .skill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .skill-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+  .skill-pct { font-size: 0.82rem; color: var(--accent); font-weight: 600; }
+  .skill-track { background: var(--border); border-radius: 4px; height: 5px; overflow: hidden; }
+  .skill-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    animation: fillBar 1.5s cubic-bezier(0.16,1,0.3,1) both;
+    animation-play-state: paused;
+  }
+  .skill-fill.animated { animation-play-state: running; }
+
+  @keyframes fillBar { from { width: 0 !important; } }
+
+  .tools-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .tool-pill .ticon { font-size: 1.1rem; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .testi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .testi-stars { color: var(--amber); font-size: 0.85rem; margin-bottom: 14px; }
+  .testi-quote { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-weight: 300; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #000;
+  }
+  .testi-name { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+  .testi-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-wrap::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(14,165,233,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-info h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .contact-info p { color: var(--muted); margin-bottom: 36px; font-weight: 300; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.92rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .contact-link:hover .contact-link-icon { background: var(--accent-glow); border-color: rgba(14,165,233,0.3); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  .form-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: var(--muted); }
+
+  textarea.form-input { resize: none; height: 100px; }
+
+  .form-submit {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .form-submit:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--white); font-size: 0.95rem; }
+  .footer-logo span { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-visual { display: none; }
+    .section-inner { padding: 70px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .case-card.wide { grid-column: 1; display: block; }
+    .skills-layout { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; padding: 36px 24px; gap: 36px; }
+    .stats-row { gap: 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Zohaib<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Case Studies</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for new projects
+    </div>
+
+    <h1>
+      SEO That<br/>
+      <span class="highlight">Converts.</span>
+    </h1>
+
+    <p class="hero-sub">
+      I'm Zohaib Fayyaz — an SEO Specialist helping businesses rank higher, attract organic traffic, and turn search visibility into real revenue.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">
+        View Case Studies
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-secondary">Let's Talk</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">2<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30<span>+</span></div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">↑<span>340%</span></div>
+        <div class="stat-label">Avg Traffic Growth</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Visual -->
+  <div class="hero-visual">
+    <div class="rank-card">
+      <div class="rank-card-header">
+        <span class="rank-label">Keyword Rankings</span>
+        <span class="rank-badge">↑ Improved</span>
+      </div>
+      <div class="rank-keyword">"best dental clinic lahore"</div>
+      <div class="rank-bar-wrap"><div class="rank-bar" style="width:92%"></div></div>
+      <div class="rank-meta"><span>Position #1</span><span>2.4K searches/mo</span></div>
+      <br/>
+      <div class="rank-keyword">"ac repair service near me"</div>
+      <div class="rank-bar-wrap"><div class="rank-bar" style="width:75%"></div></div>
+      <div class="rank-meta"><span>Position #2</span><span>5.1K searches/mo</span></div>
+      <br/>
+      <div class="rank-keyword">"plumber dubai 24 hour"</div>
+      <div class="rank-bar-wrap"><div class="rank-bar" style="width:60%"></div></div>
+      <div class="rank-meta"><span>Position #4</span><span>3.8K searches/mo</span></div>
+    </div>
+    <div class="traffic-card">
+      <div class="traffic-header">
+        <span class="traffic-title">Organic Traffic (8 months)</span>
+        <span class="traffic-up">+340% ↑</span>
+      </div>
+      <div class="bars">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">What I Do</div>
+    <h2 class="section-title">Full-Spectrum SEO Services</h2>
+    <p class="section-desc">From technical foundations to local dominance — I cover every layer of your search presence.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-name">Technical SEO</div>
+        <div class="service-desc">Deep audits of site architecture, crawlability, indexation, Core Web Vitals, page speed, mobile usability, and structured data implementation.</div>
+        <div class="service-tags">
+          <span class="stag">Site Audits</span>
+          <span class="stag">Schema Markup</span>
+          <span class="stag">Core Web Vitals</span>
+          <span class="stag">Crawl Fixes</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <div class="service-name">On-Page Optimization</div>
+        <div class="service-desc">Strategic optimization of metadata, headers, internal linking, content structure, URL architecture, and image alt text to maximize organic relevance.</div>
+        <div class="service-tags">
+          <span class="stag">Metadata</span>
+          <span class="stag">Internal Links</span>
+          <span class="stag">Content Structure</span>
+          <span class="stag">URL Optimization</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📍</div>
+        <div class="service-name">Local SEO</div>
+        <div class="service-desc">Google Business Profile optimization, local citation building, location page strategy, and map pack ranking to dominate your local market.</div>
+        <div class="service-tags">
+          <span class="stag">Google Business Profile</span>
+          <span class="stag">Citations</span>
+          <span class="stag">Map Pack</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <div class="service-name">Off-Page & Link Building</div>
+        <div class="service-desc">Strategic backlink acquisition, domain authority growth, and digital PR to build your website's credibility in Google's eyes.</div>
+        <div class="service-tags">
+          <span class="stag">Link Building</span>
+          <span class="stag">Domain Authority</span>
+          <span class="stag">Digital PR</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">Keyword Research</div>
+        <div class="service-desc">Data-driven keyword mapping using SEMrush, Google Keyword Planner, and Search Console to uncover high-intent opportunities your competitors are missing.</div>
+        <div class="service-tags">
+          <span class="stag">SEMrush</span>
+          <span class="stag">Intent Mapping</span>
+          <span class="stag">Competitor Gap</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-name">AEO & GEO</div>
+        <div class="service-desc">Future-proofing your brand visibility for AI-powered search through Answer Engine Optimization and Generative Engine Optimization strategies.</div>
+        <div class="service-tags">
+          <span class="stag">AI Search</span>
+          <span class="stag">AEO</span>
+          <span class="stag">GEO</span>
+          <span class="stag">SGE Ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work" style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="section-tag">Proven Results</div>
+    <h2 class="section-title">Case Studies</h2>
+    <p class="section-desc">Real campaigns, real numbers. Here's what strategic SEO looks like in practice.</p>
+
+    <div class="cases-grid">
+      <!-- Case 1 -->
+      <div class="case-card">
+        <span class="case-industry">Healthcare · Dental Clinic</span>
+        <div class="case-title">Local SEO Domination for Multi-Location Dental Practice</div>
+        <div class="case-desc">A dental group with 3 locations had zero local pack presence and relied entirely on paid ads. Implemented full local SEO strategy including GBP optimization, citation cleanup, and location page overhaul.</div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-value up">+410%</div>
+            <div class="metric-label">Organic Traffic</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">#1</div>
+            <div class="metric-label">Local Pack Ranking</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">-60%</div>
+            <div class="metric-label">Ad Spend</div>
+          </div>
+        </div>
+        <div class="case-divider"></div>
+        <div class="case-tools">
+          <span class="case-tool">BrightLocal</span>
+          <span class="case-tool">Google Business Profile</span>
+          <span class="case-tool">SEMrush</span>
+          <span class="case-tool">WordPress</span>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card">
+        <span class="case-industry">Home Services · HVAC</span>
+        <div class="case-title">Technical SEO Overhaul for HVAC Company</div>
+        <div class="case-desc">Site had critical crawl errors, 47 broken links, no schema markup, and 8-second load time. Resolved all technical issues, implemented service area schema, and optimized for "near me" searches.</div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-value up">+280%</div>
+            <div class="metric-label">Organic Leads</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">0.8s</div>
+            <div class="metric-label">Load Time</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">Top 3</div>
+            <div class="metric-label">12 Keywords</div>
+          </div>
+        </div>
+        <div class="case-divider"></div>
+        <div class="case-tools">
+          <span class="case-tool">Screaming Frog</span>
+          <span class="case-tool">PageSpeed Insights</span>
+          <span class="case-tool">RankMath</span>
+          <span class="case-tool">GSC</span>
+        </div>
+      </div>
+
+      <!-- Case 3 Wide -->
+      <div class="case-card wide">
+        <div>
+          <span class="case-industry">E-Commerce · Fashion Retail</span>
+          <div class="case-title">Organic Revenue Growth for Fashion E-Commerce Store</div>
+          <div class="case-desc">A Shopify-based fashion retailer was getting 95% of sales from Meta ads. Built a full content and on-page SEO strategy from scratch: keyword-mapped product pages, optimized collections, and a blog content calendar targeting buyer-intent queries. Within 8 months, organic became their #2 revenue channel.</div>
+          <div class="case-divider"></div>
+          <div class="case-tools">
+            <span class="case-tool">Shopify</span>
+            <span class="case-tool">SEMrush</span>
+            <span class="case-tool">Google Analytics 4</span>
+            <span class="case-tool">Google Search Console</span>
+            <span class="case-tool">Microsoft Clarity</span>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-value up">+340%</div>
+            <div class="metric-label">Organic Sessions</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">+$48K</div>
+            <div class="metric-label">Organic Revenue (mo.)</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">86</div>
+            <div class="metric-label">Keywords in Top 10</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value up">8mo</div>
+            <div class="metric-label">Timeline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-tag">Expertise</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-desc">Two years of hands-on work across dozens of industries and CMS platforms.</p>
+
+    <div class="skills-layout">
+      <div class="skills-list" id="skillsList">
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Technical SEO</span><span class="skill-pct">95%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">On-Page Optimization</span><span class="skill-pct">93%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:93%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Local SEO & GBP</span><span class="skill-pct">90%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Keyword Research</span><span class="skill-pct">92%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">WordPress & CMS</span><span class="skill-pct">88%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">SEMrush & Analytics</span><span class="skill-pct">87%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:87%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Link Building</span><span class="skill-pct">85%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="margin-bottom:28px; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted);">Tools & Platforms</div>
+        <div class="tools-cloud">
+          <div class="tool-pill"><span class="ticon">📊</span> SEMrush</div>
+          <div class="tool-pill"><span class="ticon">🔍</span> Google Search Console</div>
+          <div class="tool-pill"><span class="ticon">📈</span> Google Analytics 4</div>
+          <div class="tool-pill"><span class="ticon">📍</span> BrightLocal</div>
+          <div class="tool-pill"><span class="ticon">🖱️</span> Microsoft Clarity</div>
+          <div class="tool-pill"><span class="ticon">⚡</span> RankMath</div>
+          <div class="tool-pill"><span class="ticon">🟢</span> Yoast SEO</div>
+          <div class="tool-pill"><span class="ticon">🌐</span> WordPress</div>
+          <div class="tool-pill"><span class="ticon">🛒</span> Shopify</div>
+          <div class="tool-pill"><span class="ticon">🎨</span> Duda</div>
+          <div class="tool-pill"><span class="ticon">🏗️</span> Wix</div>
+          <div class="tool-pill"><span class="ticon">🐸</span> Screaming Frog</div>
+          <div class="tool-pill"><span class="ticon">🗺️</span> Google Business Profile</div>
+          <div class="tool-pill"><span class="ticon">🤖</span> AEO / GEO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="section-tag">Social Proof</div>
+    <h2 class="section-title">What Clients Say</h2>
+    <p class="section-desc">Results speak louder than rankings.</p>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Zohaib took our dental practice from invisible on Google to the top 3 in local search within 5 months. Our front desk now gets more calls from Google than from any ad campaign."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div>
+            <div class="testi-name">Dr. Ayesha Khan</div>
+            <div class="testi-role">Owner, SmileCare Dental (Lahore)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"He fixed technical issues our previous agency didn't even mention. Site speed went from 8 seconds to under 1. Leads increased dramatically — and our ad budget went down."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Marcus Rivera</div>
+            <div class="testi-role">CEO, CoolBreeze HVAC Services</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Zohaib built our entire content and SEO strategy from the ground up. Organic is now our #2 revenue channel. The ROI from SEO completely changed how we think about marketing."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SN</div>
+          <div>
+            <div class="testi-name">Sara Noor</div>
+            <div class="testi-role">Founder, ThreadHouse Fashion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="section-tag">Get In Touch</div>
+        <h2>Let's Grow Your<br/>Organic Traffic</h2>
+        <p>Whether you need a full SEO strategy or a technical audit — I'm ready to help your business rank and convert.</p>
+
+        <div class="contact-links">
+          <a href="mailto:malikzohaib6019x@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            malikzohaib6019x@gmail.com
+          </a>
+          <a href="tel:+923023884319" class="contact-link">
+            <div class="contact-link-icon">📞</div>
+            +92 302 388 4319
+          </a>
+          <a href="https://www.linkedin.com/in/zohaibseospecialist" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            linkedin.com/in/zohaibseospecialist
+          </a>
+          <a href="#" class="contact-link">
+            <div class="contact-link-icon">📍</div>
+            Punjab, Pakistan · Open to Remote
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="John Smith"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="john@company.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Website URL</label>
+          <input type="text" class="form-input" placeholder="https://yourwebsite.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" placeholder="Tell me about your SEO goals..."></textarea>
+        </div>
+        <button class="form-submit" onclick="this.textContent='Message Sent ✓'; this.style.background='var(--green)'">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Zohaib<span>.</span></div>
+  <div>SEO Specialist · Punjab, Pakistan · Open to Remote</div>
+  <div>© 2025 Zohaib Fayyaz</div>
+</footer>
+
+<script>
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => bar.classList.add('animated'));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const skillsList = document.getElementById('skillsList');
+  if (skillsList) observer.observe(skillsList);
+
+  // Fade-in sections
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .case-card, .testi-card, .tool-pill').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.5s ${i * 0.05}s ease, transform 0.5s ${i * 0.05}s ease`;
+    fadeObserver.observe(el);
+  });
+</script>
+</body>
+</html>
